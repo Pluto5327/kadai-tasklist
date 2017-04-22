@@ -1,4 +1,4 @@
-class Micropost < ApplicationRecord
+class Tasklist < ApplicationRecord
   belongs_to :user
   
   validates :user_id, presence: true
