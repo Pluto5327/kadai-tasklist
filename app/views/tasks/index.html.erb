@@ -1,8 +1,22 @@
 <% if logged_in? %>
   <div class="row">
-    <aside class="col-md-4">
+    <aside class="col-xs-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= current_user.name %></h3>
+        </div>
+        <div class="panel-body">
+          <img class="media-object img-rounded img-responsive" src="<%= gravatar_url(current_user, { size: 500 }) %>" alt="">
+        </div>
+      </div>
+      <%= link_to "new_task", new_task_path %> 
     </aside>
     <div class="col-xs-8">
+      <ul>
+      <% @tasks.each do |task| %>
+        <li><%= link_to task.id, task %>-<%= task.status %> : <%= task.content %> : <%= task.updated_at %></li>
+      <% end %>
+      </ul>
     </div>
   </div>
 <% else %>
